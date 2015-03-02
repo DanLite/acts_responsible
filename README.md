@@ -18,7 +18,7 @@ Or install it yourself as:
 
 1.  Add `acts_responsible` to your API controller(s):
 
-    ```
+    ```ruby
     include ActsResponsible
 
     class Api::V1::ApiController < ApplicationController
@@ -30,12 +30,13 @@ Or install it yourself as:
 
 2.  Render your responses, complete with errors or metadata:
 
-    ```
+    ```ruby
     class Api::V1::PostsController < API::V1::ApiController
 
       def index
         @posts = Post.all
-        # 200 OK with a root-level `posts` collection that renders @posts using a "posts/post" RABL template
+        # 200 OK with a root-level `posts` collection that
+        # renders @posts using a "posts/post" RABL template
         render_response @posts, 'posts', 'posts/post'
       end
       
@@ -57,17 +58,17 @@ Or install it yourself as:
 
 -   Example `posts/post.rabl` template:
 
-    ```
+    ```ruby
     attributes :id, :title, :body
 
     node :created_at do |post|
-      post.updated_at.utc.to_i
+      post.created_at.utc.to_i
     end
     ```
 
 -   Example `id.rabl` template:
 
-    ```
+    ```ruby
     attributes :id
     ```
 
