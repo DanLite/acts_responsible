@@ -1,5 +1,8 @@
 require 'acts_responsible/core'
 
+# make dependencies available to parent project
+require 'rabl'
+
 module ActsResponsible
   def responsible?
     self.included_modules.include?(ActsResponsible::Core)
