@@ -7,5 +7,5 @@ node(@responsibility[:data_key] || 'data') do
 end if @responsibility[:data] && @responsibility[:partial]
 
 node 'errors' do
-  partial 'application/error', object: @responsibility[:errors]
+  partial 'acts_responsible/error', object: @responsibility[:errors]
 end if @responsibility[:errors].present?

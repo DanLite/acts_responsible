@@ -11,7 +11,9 @@ module ActsResponsible
         metadata: options.delete(:meta),
         partial: "#{prefix}/#{template}"
       })
-      render "response", options
+
+      options.merge!(template: 'acts_responsible/response')
+      render options
     end
 
     def render_empty_response(options={})
